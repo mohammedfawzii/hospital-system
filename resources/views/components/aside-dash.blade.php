@@ -27,7 +27,7 @@
                 <li class="{{ "dashboard/message"  == request()->path()? "menu-item active":"menu-item" }}"><a href="{{ route('message') }}" class="menu-link">Messages</a></li>
                 <li class="{{ "dashboard/staf"  == request()->path()? "menu-item active":"menu-item" }}"><a href="{{ route('staf') }}" class="menu-link">Staff</a></li>
                 <li class="{{ "dashboard/account"  == request()->path()? "menu-item active":"menu-item" }}"><a href="{{ route('account') }}" class="menu-link">Accounts</a></li>
-                <li class="{{ "dashboard/pharmacy"  == request()->path()? "menu-item active":"menu-item" }}"><a href="{{ route('pharmacy') }}" class="menu-link">Pharmacy</a></li>
+                <li class="{{ "dashboard/pharmacy/pharmaceutical"  == request()->path()? "menu-item active":"menu-item" }}"><a href="{{ route('pharmaceutical') }}" class="menu-link">Pharmacy</a></li>
                 <li class="menu-item"><a href="{{ route("home") }}" class="menu-link">Landing Page</a></li>
               </ul><!-- /.menu -->
             </nav><!-- /.stacked-menu -->

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PharmacyController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,14 +29,25 @@ Route::get("/",[WebController::class,"index"])->name("home");
 
 
 
-// -----------------back routes--------------------------------
+// -----------------dash routes--------------------------------
+Route::group(['prefix'=>'dashboard/' ] ,function(){
+    Route::get('department',[DashboardController::class,"Department"])->name('department');
+    Route::get('clinic',[DashboardController::class,"clinic"])->name('clinic');
+    Route::get('patient',[DashboardController::class,"patient"])->name('patient');
+    Route::get('message',[DashboardController::class,"message"])->name('message');
+    Route::get('staf',[DashboardController::class,"staf"])->name('staf');
+    Route::get('account',[DashboardController::class,"account"])->name('account');
+    Route::get('pharmacy',[DashboardController::class,"pharmacy"])->name('pharmacy');
+});
 
-Route::get('dashboard',[DashboardController::class,"dash"])->name('dash');
-Route::get('dashboard/department',[DashboardController::class,"Department"])->name('department');
-Route::get('dashboard/clinic',[DashboardController::class,"clinic"])->name('clinic');
-Route::get('dashboard/patient',[DashboardController::class,"patient"])->name('patient');
-Route::get('dashboard/message',[DashboardController::class,"message"])->name('message');
-Route::get('dashboard/staf',[DashboardController::class,"staf"])->name('staf');
-Route::get('dashboard/account',[DashboardController::class,"account"])->name('account');
-Route::get('dashboard/pharmacy',[DashboardController::class,"pharmacy"])->name('pharmacy');
 
+// -----------------pharmacy routes--------------------------------
+Route::group(['prefix'=>'dashboard/pharmacy' ] ,function(){
+    Route::get('/pharmaceutical',[PharmacyController::class,'pharmaceutical'])->name('pharmaceutical');
+    Route::get('/invoice',[PharmacyController::class,'invoice'])->name('invoice');
+    Route::get('/total-sales',[PharmacyController::class,'totalSales'])->name('total-sales');
+    Route::get('/shortfalls',[PharmacyController::class,'shortfalls'])->name('shortfalls');
+    Route::get('/expired',[PharmacyController::class,'expired'])->name('expired');
+    Route::get('/note',[PharmacyController::class,'note'])->name('note');
+    Route::get('/pharmaceutical',[PharmacyController::class,'pharmaceutical'])->name('pharmaceutical');
+});
