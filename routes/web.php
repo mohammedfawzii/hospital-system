@@ -34,3 +34,8 @@ Route::get('dashboard',[DashboardController::class,"dash"])->name('dash');
 Route::get('dashboard/department',[DashboardController::class,"Department"])->name('department');
 Route::get('dashboard/clinic',[DashboardController::class,"clinic"])->name('clinic');
 Route::get('dashboard/patient',[DashboardController::class,"patient"])->name('patient');
+Route::get('dashboard/message',[DashboardController::class,"message"])->name('message');
+Route::get('dashboard/staf',[DashboardController::class,"staf"])->name('staf');
+Route::get('dashboard/account',[DashboardController::class,"account"])->name('account');
+Route::get('dashboard/pharmacy',[DashboardController::class,"pharmacy"])->name('pharmacy');
+

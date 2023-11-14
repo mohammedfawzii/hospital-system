@@ -24,10 +24,10 @@
                 <li class="{{ "dashboard/department"  == request()->path()? "menu-item active":"menu-item" }}"><a href="{{ route('department') }}" class="menu-link">Department's</a></li>
                 <li class="{{ "dashboard/clinic"  == request()->path()? "menu-item active":"menu-item" }}"><a href="{{ route('clinic') }}" class="menu-link">Clinics</a></li>
                 <li class="{{ "dashboard/patient"  == request()->path()? "menu-item active":"menu-item" }}"><a href="{{ route('patient') }}" class="menu-link">Patients</a></li>
-                <li class="{{ "dashboard/message"  == request()->path()? "menu-item active":"menu-item" }}"><a href="page-team-projects.html" class="menu-link">Messages</a></li>
-                <li class="{{ "dashboard/staff"  == request()->path()? "menu-item active":"menu-item" }}"><a href="page-team-projects.html" class="menu-link">Staff</a></li>
-                <li class="{{ "dashboard/account"  == request()->path()? "menu-item active":"menu-item" }}"><a href="page-team-projects.html" class="menu-link">Accounts</a></li>
-                <li class="{{ "dashboard/pharmacy"  == request()->path()? "menu-item active":"menu-item" }}"><a href="page-team-projects.html" class="menu-link">Pharmacy</a></li>
+                <li class="{{ "dashboard/message"  == request()->path()? "menu-item active":"menu-item" }}"><a href="{{ route('message') }}" class="menu-link">Messages</a></li>
+                <li class="{{ "dashboard/staf"  == request()->path()? "menu-item active":"menu-item" }}"><a href="{{ route('staf') }}" class="menu-link">Staff</a></li>
+                <li class="{{ "dashboard/account"  == request()->path()? "menu-item active":"menu-item" }}"><a href="{{ route('account') }}" class="menu-link">Accounts</a></li>
+                <li class="{{ "dashboard/pharmacy"  == request()->path()? "menu-item active":"menu-item" }}"><a href="{{ route('pharmacy') }}" class="menu-link">Pharmacy</a></li>
                 <li class="menu-item"><a href="{{ route("home") }}" class="menu-link">Landing Page</a></li>
               </ul><!-- /.menu -->
             </nav><!-- /.stacked-menu -->
