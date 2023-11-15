@@ -19,8 +19,8 @@ class DashboardController extends Controller
     public function message(){
         return view("dashboard.message");
     }
-    public function staf(){
-        return view("dashboard.staf");
+    public function staff(){
+        return view("dashboard.staff");
     }
     public function account(){
         return view("dashboard.account");

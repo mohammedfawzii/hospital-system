@@ -35,7 +35,7 @@ Route::group(['prefix'=>'dashboard/' ] ,function(){
     Route::get('clinic',[DashboardController::class,"clinic"])->name('clinic');
     Route::get('patient',[DashboardController::class,"patient"])->name('patient');
     Route::get('message',[DashboardController::class,"message"])->name('message');
-    Route::get('staf',[DashboardController::class,"staf"])->name('staf');
+    Route::get('staff',[DashboardController::class,"staff"])->name('staff');
     Route::get('account',[DashboardController::class,"account"])->name('account');
     Route::get('pharmacy',[DashboardController::class,"pharmacy"])->name('pharmacy');
 });
