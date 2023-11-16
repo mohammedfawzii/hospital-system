@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PharmacyController;
 use App\Http\Controllers\WebController;
@@ -51,3 +52,8 @@ Route::group(['prefix'=>'dashboard/pharmacy' ] ,function(){
     Route::get('/note',[PharmacyController::class,'note'])->name('note');
     Route::get('/pharmaceutical',[PharmacyController::class,'pharmaceutical'])->name('pharmaceutical');
 });
+//-----------------auth route---------------------------
+Route::get("login",[AuthController::class,"login"])->name('login');
+Route::post("login",[AuthController::class,"post_login"])->name('login.post');
+Route::get("register",[AuthController::class,"register"])->name('register');
+Route::post("post_register",[AuthController::class,"post_register"])->name('register.post');
