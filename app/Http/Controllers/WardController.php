@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WardRequest;
 use App\Models\Ward;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class WardController extends Controller
      */
     public function index()
     {
-        //
+        $wards = Ward::all();
+        return view('wards.index', compact('wards'));
     }
 
     /**
@@ -20,15 +22,17 @@ class WardController extends Controller
      */
     public function create()
     {
-        //
+        return view('wards.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(WardRequest $request)
     {
-        //
+        Ward::create($request->validated());
+
+        return redirect()->route('wards.index');
     }
 
     /**
@@ -36,7 +40,7 @@ class WardController extends Controller
      */
     public function show(Ward $ward)
     {
-        //
+        return view('wards.show', compact('ward'));
     }
 
     /**
@@ -44,15 +48,18 @@ class WardController extends Controller
      */
     public function edit(Ward $ward)
     {
-        //
+        return view('wards.edit', compact('ward'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Ward $ward)
+    public function update(WardRequest $request, Ward $ward)
     {
-        //
+        // قم بتحديث السجل في قاعدة البيانات
+        $ward->update($request->validated());
+
+        return redirect()->route('wards.index');
     }
 
     /**
@@ -60,6 +67,8 @@ class WardController extends Controller
      */
     public function destroy(Ward $ward)
     {
-        //
+        $ward->delete();
+
+        return redirect()->route('wards.index');
     }
 }

@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('Clinic_location');
             $table->string('specilization');
-
-
             $table->timestamps();
         });
     }

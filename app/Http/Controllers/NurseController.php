@@ -1,7 +1,10 @@
 <?php
 
+// app/Http/Controllers/NurseController.php
+
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NurseRequest;
 use App\Models\Nurse;
 use Illuminate\Http\Request;
 
@@ -12,7 +15,8 @@ class NurseController extends Controller
      */
     public function index()
     {
-        //
+        $nurses = Nurse::all();
+        return view('nurses.index', compact('nurses'));
     }
 
     /**
@@ -20,15 +24,18 @@ class NurseController extends Controller
      */
     public function create()
     {
-        //
+        return view('nurses.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(NurseRequest $request)
     {
-        //
+
+        Nurse::create($request->validated());
+
+        return redirect()->route('nurses.index');
     }
 
     /**
@@ -36,7 +43,7 @@ class NurseController extends Controller
      */
     public function show(Nurse $nurse)
     {
-        //
+        return view('nurses.show', compact('nurse'));
     }
 
     /**
@@ -44,15 +51,18 @@ class NurseController extends Controller
      */
     public function edit(Nurse $nurse)
     {
-        //
+        return view('nurses.edit', compact('nurse'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Nurse $nurse)
+    public function update(NurseRequest $request, Nurse $nurse)
     {
-        //
+
+        $nurse->update($request->validated());
+
+        return redirect()->route('nurses.index');
     }
 
     /**
@@ -60,6 +70,9 @@ class NurseController extends Controller
      */
     public function destroy(Nurse $nurse)
     {
-        //
+
+        $nurse->delete();
+
+        return redirect()->route('nurses.index');
     }
 }

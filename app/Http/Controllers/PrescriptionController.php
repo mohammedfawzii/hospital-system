@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PrescriptionRequest;
 use App\Models\Prescription;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class PrescriptionController extends Controller
      */
     public function index()
     {
-        //
+        $prescriptions = Prescription::all();
+        return view('prescriptions.index', compact('prescriptions'));
     }
 
     /**
@@ -20,15 +22,18 @@ class PrescriptionController extends Controller
      */
     public function create()
     {
-        //
+        return view('prescriptions.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PrescriptionRequest $request)
     {
-        //
+
+        Prescription::create($request->validated());
+
+        return redirect()->route('prescriptions.index');
     }
 
     /**
@@ -36,7 +41,7 @@ class PrescriptionController extends Controller
      */
     public function show(Prescription $prescription)
     {
-        //
+        return view('prescriptions.show', compact('prescription'));
     }
 
     /**
@@ -44,15 +49,17 @@ class PrescriptionController extends Controller
      */
     public function edit(Prescription $prescription)
     {
-        //
+        return view('prescriptions.edit', compact('prescription'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prescription $prescription)
+    public function update(PrescriptionRequest $request, Prescription $prescription)
     {
-        //
+        $prescription->update($request->validated());
+
+        return redirect()->route('prescriptions.index');
     }
 
     /**
@@ -60,6 +67,8 @@ class PrescriptionController extends Controller
      */
     public function destroy(Prescription $prescription)
     {
-        //
+        $prescription->delete();
+
+        return redirect()->route('prescriptions.index');
     }
 }

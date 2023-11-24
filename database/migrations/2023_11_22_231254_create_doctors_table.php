@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('speciality');
             $table->unsignedBigInteger('Department_id');
             $table->foreign('Department_id')->references('id')->on('departments')->onDelete('cascade');
-
             $table->timestamps();
         });
     }

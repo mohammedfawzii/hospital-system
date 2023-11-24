@@ -1,9 +1,21 @@
 <?php
 
+use App\Http\Controllers\AdmissionController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\NurseController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PharmacyController;
+use App\Http\Controllers\PrescriptionController;
+use App\Http\Controllers\ReceptionController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\WardController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,17 +33,35 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
-
-
-
-
-// ------------------web routes----------------------------
 Route::get("/", function () {
     return view("auth.login");
 });
 
+Route::resource('admission', AdmissionController::class);
+
+Route::resource('Appointmen', AppointmentController::class);
+
+Route::resource('Clinic', ClinicController::class);
+
+Route::resource('Department', DepartmentController::class);
+
 Route::resource('doctor', DoctorController::class);
+
+Route::resource('Invoice', InvoiceController::class);
+
+Route::resource('Nurse', NurseController::class);
+
+Route::resource('Patient', PatientController::class);
+
+Route::resource('Prescription', PrescriptionController::class);
+
+Route::resource('Reception', ReceptionController::class);
+
+Route::resource('Service', ServiceController::class);
+
+Route::resource('Test', TestController::class);
+
+Route::resource('Ward', WardController::class);
 
 
 // -----------------dash routes--------------------------------

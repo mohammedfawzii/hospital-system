@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
 
             $table->unsignedBigInteger('patient_id');
+            $table->foreign('patient_id')->references('id')->on('patients');
 
             $table->unsignedBigInteger('ward_id');
+            $table->foreign('ward_id')->references('id')->on('wards');
 
             $table->date('discharge_date')->nullable();
 

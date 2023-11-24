@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClinicRequest;
 use App\Models\Clinic;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class ClinicController extends Controller
      */
     public function index()
     {
-        //
+        $clinics = Clinic::all();
+        return view('clinics.index', compact('clinics'));
     }
 
     /**
@@ -20,15 +22,17 @@ class ClinicController extends Controller
      */
     public function create()
     {
-        //
+        return view('clinics.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ClinicRequest $request)
     {
-        //
+        Clinic::create($request->validated());
+
+        return redirect()->route('clinics.index');
     }
 
     /**
@@ -36,7 +40,7 @@ class ClinicController extends Controller
      */
     public function show(Clinic $clinic)
     {
-        //
+        return view('clinics.show', compact('clinic'));
     }
 
     /**
@@ -44,15 +48,17 @@ class ClinicController extends Controller
      */
     public function edit(Clinic $clinic)
     {
-        //
+        return view('clinics.edit', compact('clinic'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Clinic $clinic)
+    public function update(ClinicRequest $request, Clinic $clinic)
     {
-        //
+        $clinic->update($request->validated());
+
+        return redirect()->route('clinics.index');
     }
 
     /**
@@ -60,6 +66,8 @@ class ClinicController extends Controller
      */
     public function destroy(Clinic $clinic)
     {
-        //
+        $clinic->delete();
+
+        return redirect()->route('clinics.index');
     }
 }

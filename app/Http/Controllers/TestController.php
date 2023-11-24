@@ -1,7 +1,9 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TestRequest;
 use App\Models\Test;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,8 @@ class TestController extends Controller
      */
     public function index()
     {
-        //
+        $tests = Test::all();
+        return view('tests.index', compact('tests'));
     }
 
     /**
@@ -20,15 +23,18 @@ class TestController extends Controller
      */
     public function create()
     {
-        //
+        return view('tests.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(TestRequest $request)
     {
-        //
+
+        Test::create($request->validated());
+
+        return redirect()->route('tests.index');
     }
 
     /**
@@ -36,7 +42,7 @@ class TestController extends Controller
      */
     public function show(Test $test)
     {
-        //
+        return view('tests.show', compact('test'));
     }
 
     /**
@@ -44,15 +50,18 @@ class TestController extends Controller
      */
     public function edit(Test $test)
     {
-        //
+        return view('tests.edit', compact('test'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Test $test)
+    public function update(TestRequest $request, Test $test)
     {
-        //
+        // قم بتحديث السجل في قاعدة البيانات
+        $test->update($request->validated());
+
+        return redirect()->route('tests.index');
     }
 
     /**
@@ -60,6 +69,8 @@ class TestController extends Controller
      */
     public function destroy(Test $test)
     {
-        //
+        $test->delete();
+
+        return redirect()->route('tests.index');
     }
 }

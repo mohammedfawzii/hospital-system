@@ -1,7 +1,10 @@
 <?php
 
+// app/Http/Controllers/DoctorController.php
+
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DoctorRequest;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 
@@ -12,7 +15,8 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        return 'mahmoud';
+        $doctors = Doctor::all();
+        return view('doctors.index', compact('doctors'));
     }
 
     /**
@@ -20,15 +24,18 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        //
+        return view('doctors.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(DoctorRequest $request)
     {
-        //
+
+        Doctor::create($request->validated());
+
+        return redirect()->route('doctors.index');
     }
 
     /**
@@ -36,7 +43,7 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        //
+        return view('doctors.show', compact('doctor'));
     }
 
     /**
@@ -44,15 +51,18 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        //
+        return view('doctors.edit', compact('doctor'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update(DoctorRequest $request, Doctor $doctor)
     {
-        //
+
+        $doctor->update($request->validated());
+
+        return redirect()->route('doctors.index');
     }
 
     /**
@@ -60,6 +70,7 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        //
+        $doctor->delete();
+        return redirect()->route('doctors.index');
     }
 }
